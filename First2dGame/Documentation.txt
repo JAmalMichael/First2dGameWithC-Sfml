@@ -1,0 +1,34 @@
+1. First off we create an asset folder containing the character files, animation and tiles.
+1. Project planning and setup
+2. Asset pipeline and data
+folder layout, resolution,
+3. Core engine skeleton
+Implement main loop with fixed-timestep
+Add Scene and state manager that can switch between scenes(Menu, Game, Pause, GameOver)
+Implement resource manager(s) for textures, font, audio-load on demand
+4. ECS basics & data model
+Decide entity representation (integer ID)
+Define component rules: Position, Velocity, Sprite, Collider, PlayerInput, Animation,Health, CameraFollow,TilemapLayer,etc)
+Decide storage
+Systems: RenderSystem, PhysicsSystem, InoutSystem, CollisonSystem, AnimationSyetem,CameraSystem, UISystem,AudioSyste, AISystem.
+5. Tilemap and Level System
+6. Input and Player controller
+player movement: velocity + gravity + ground deection
+coyote time, jump buffering, variable jump height for tighter feel.
+Ground friction and air control tuning
+7. Collision detection & response
+8. Rendering and Camera
+9. Animation and sprite handling
+10. Enemies and AI
+Patrol(moves back and forth), chase if player nearby), Idle, Attack, Dead.
+Interaction: Enemy defeat by distinct moves
+11. health, powerups & collectibles
+12. Menu, pause, UI and Scene transitions
+13. Audio
+14. Polishing system
+15. Testing and debugging
+16. performance & Optimization
+17. Controls
+18. Build, packaging & release
+Test release binaries for target OS
+19. Development workflow
