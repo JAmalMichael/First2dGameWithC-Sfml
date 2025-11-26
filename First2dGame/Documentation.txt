@@ -10,10 +10,10 @@ Implement resource manager(s) for textures, font, audio-load on demand
 Decide entity representation (integer ID)
 Define component rules: Position, Velocity, Sprite, Collider, PlayerInput, Animation,Health, CameraFollow,TilemapLayer,etc)
 Decide storage
-Systems: RenderSystem, PhysicsSystem, InoutSystem, CollisonSystem, AnimationSyetem,CameraSystem, UISystem,AudioSyste, AISystem.
+Systems: RenderSystem, PhysicsSystem, InputSystem, CollisonSystem, AnimationSyetem,CameraSystem, UISystem,AudioSyste, AISystem.
 5. Tilemap and Level System
 6. Input and Player controller
-player movement: velocity + gravity + ground deection
+player movement: velocity + gravity + ground detection
 coyote time, jump buffering, variable jump height for tighter feel.
 Ground friction and air control tuning
 7. Collision detection & response
