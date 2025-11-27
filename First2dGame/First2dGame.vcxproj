@@ -132,6 +132,7 @@
     <ClCompile Include="filereader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene_Game.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
