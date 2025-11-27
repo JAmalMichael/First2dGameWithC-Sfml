@@ -22,6 +22,9 @@ void SceneGame::sInput()
 	{
 		if (event.type == sf::Event::Closed) m_game->window().close();
 
+		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
+			m_game->changeScene("GAMEOVER");*/
+
 		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
 	}
 

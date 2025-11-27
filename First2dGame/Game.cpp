@@ -1,14 +1,14 @@
 #include "Game.h"
 #include "Scene_Menu.h"
 #include "Scene_Game.h"
-//#include "Scene_GameOver.h"
+#include "Scene_GameOver.h"
 
 Game::Game(): m_window(sf::VideoMode(1280, 720), "TJMask")
 {
 	m_currentScene = "MENU";
 	registerScene("MENU", std::make_shared<SceneMenu>(this));
 	registerScene("GAME", std::make_shared<SceneGame>(this));
-	//registerScene("GAMEOVER", std::make_shared<SceneGameOver>(this));
+	registerScene("GAMEOVER", std::make_shared<SceneGameOver>(this));
 }
 
 void Game::run() {
