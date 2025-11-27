@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -130,8 +130,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="filereader.cpp" />
-    <ClCompile Include="GameObj.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene_Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAI.h" />
@@ -152,12 +153,29 @@
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="filereader.h" />
-    <ClInclude Include="GameObj.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PowerUps.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="SAI.h" />
+    <ClInclude Include="SAnimation.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene_Game.h" />
+    <ClInclude Include="Scene_GameOver.h" />
+    <ClInclude Include="Scene_Menu.h" />
+    <ClInclude Include="SCollision.h" />
+    <ClInclude Include="SDamage.h" />
+    <ClInclude Include="SGameState.h" />
+    <ClInclude Include="SInput.h" />
+    <ClInclude Include="SLevelLoader.h" />
+    <ClInclude Include="SMovement.h" />
+    <ClInclude Include="SParticle.h" />
+    <ClInclude Include="SPhysics.h" />
+    <ClInclude Include="SRender.h" />
+    <ClInclude Include="SSound.h" />
+    <ClInclude Include="SSpawner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
