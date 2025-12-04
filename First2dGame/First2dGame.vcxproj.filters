@@ -173,5 +173,8 @@
     <ClInclude Include="Typesdef.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="CShape.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

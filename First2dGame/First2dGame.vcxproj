@@ -148,6 +148,7 @@
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CPhysiscs.h" />
     <ClInclude Include="CScore.h" />
+    <ClInclude Include="CShape.h" />
     <ClInclude Include="CSound.h" />
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CState.h" />
