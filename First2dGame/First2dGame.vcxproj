@@ -137,6 +137,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerUps.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene_Game.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
