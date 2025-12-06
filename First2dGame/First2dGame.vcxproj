@@ -135,6 +135,8 @@
     <ClCompile Include="filereader.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene_Game.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
