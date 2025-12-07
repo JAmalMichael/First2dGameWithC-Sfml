@@ -5,5 +5,5 @@
 class Player : public Entity
 {
 public:
-	Player(size_t id)
+	Player(size_t id);
 };

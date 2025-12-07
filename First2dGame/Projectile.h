@@ -5,5 +5,5 @@
 class Projectile : public Entity
 {
 public :
-	Projectile(size_t id)
+	Projectile(size_t id);
 };

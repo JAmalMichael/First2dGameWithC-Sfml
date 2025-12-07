@@ -3,7 +3,7 @@
 #include "Scene_Game.h"
 #include "Scene_GameOver.h"
 
-Game::Game(): m_window(sf::VideoMode(1280, 720), "TJMask")
+Game::Game(): m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
 {
 	m_currentScene = "MENU";
 	registerScene("MENU", std::make_shared<SceneMenu>(this));

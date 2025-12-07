@@ -4,5 +4,5 @@
 
 class PowerUps : public Entity {
 public:
-	PowerUps(size_t id)
+	PowerUps(size_t id);
 };

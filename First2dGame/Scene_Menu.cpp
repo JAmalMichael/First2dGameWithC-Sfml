@@ -6,7 +6,7 @@ SceneMenu::SceneMenu(Game* game) : Scene(game)
 	//m_font.loadFromFile("assets/fonts/arial.tff");
 	m_font.loadFromFile("assets/fonts/Satoshi.ttf");
 	m_title.setFont(m_font);
-	m_title.setString("TjMask  Press Enter to Start ->");
+	m_title.setString("HydesSyde Demo  Press Enter to Start ->");
 	m_title.setFillColor(sf::Color::Black);
 	m_title.setCharacterSize(42);
 	m_title.setPosition(120, 250);

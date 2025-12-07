@@ -5,5 +5,5 @@
 class Enemy : public Entity
 {
 public:
-	Enemy(size_t id)
+	Enemy(size_t id);
 };

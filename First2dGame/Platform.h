@@ -5,5 +5,5 @@
 class Platform : public Entity 
 {
 public:
-	Platform(size_t id)
+	Platform(size_t id);
 };

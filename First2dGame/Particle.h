@@ -5,5 +5,5 @@
 class Particle : public Entity
 {
 public:
-	Particle(size_t id)
+	Particle(size_t id);
 };
