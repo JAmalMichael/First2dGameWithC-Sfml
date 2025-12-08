@@ -72,6 +72,15 @@
     <ClCompile Include="EntityManager.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="SMovement.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SRender.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="System.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filereader.h">
@@ -211,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="EntityManager.h">
       <Filter>Source Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Source Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Source Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

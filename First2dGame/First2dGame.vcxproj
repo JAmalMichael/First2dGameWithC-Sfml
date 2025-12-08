@@ -144,6 +144,9 @@
     <ClCompile Include="Scene_Game.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
+    <ClCompile Include="SMovement.cpp" />
+    <ClCompile Include="SRender.cpp" />
+    <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CAI.h" />
@@ -191,6 +194,8 @@
     <ClInclude Include="SRender.h" />
     <ClInclude Include="SSound.h" />
     <ClInclude Include="SSpawner.h" />
+    <ClInclude Include="System.h" />
+    <ClInclude Include="Tilemap.h" />
     <ClInclude Include="Typesdef.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
