@@ -7,7 +7,7 @@
 class System {
 	virtual ~System() = default;
 	virtual void init() {};
-	virtual void update(EntityManager& em, float dt, Tilemap* tilemap = nullptr) = 0;
+	virtual void update(float dt, EntityManager& em, Tilemap* tilemap = nullptr) = 0;
 	virtual void render(sf::RenderWindow& window, EntityManager& em) {};
 };
 

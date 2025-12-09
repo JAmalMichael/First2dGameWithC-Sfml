@@ -2,10 +2,10 @@
 
 void SRender::Draw(EntityManager& em, sf::RenderWindow& window)
 {
-	for (auto & e : em.GetEntities())
+	for (auto &e : em.GetEntities())
 	{
-		auto trans = em.GetComponent<CTransform>(e);
-		auto sh = em.GetComponent<CShape>(e);
+		auto *trans = em.GetComponent<CTransform>(e);
+		auto *sh = em.GetComponent<CShape>(e);
 
 		if (!trans || !sh) continue;
 
