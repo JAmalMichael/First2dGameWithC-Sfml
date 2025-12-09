@@ -5,5 +5,5 @@
 class SRender
 {
 public:
-	void Draw(EntityManager& em, sf::RenderWindow &window);
+	void render(EntityManager& em, sf::RenderWindow &window);
 };

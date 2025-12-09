@@ -1,16 +1,19 @@
 #include "SRender.h"
 
-void SRender::Draw(EntityManager& em, sf::RenderWindow& window)
+void SRender::render(EntityManager& em, sf::RenderWindow& window)
 {
-	for (auto &e : em.GetEntities())
+	for (auto e : em.GetEntities())
 	{
-		auto *trans = em.GetComponent<CTransform>(e);
-		auto *sh = em.GetComponent<CShape>(e);
+		if (em.GetComponent<CSprite>(e) && em.GetComponent<CTransform>(e))
+		{
+			auto* spr = em.GetComponent<CSprite>(e);
+			auto* tr = em.GetComponent<CTransform>(e);
 
-		if (!trans || !sh) continue;
-
-		sh->shape.setPosition(trans->position);
-		sh->shape.setRotation(trans->angle);
-		window.draw(sh->shape);
+			spr->sprite.setPosition(tr->position);
+			spr->sprite.setScale(tr->scale);
+			spr->sprite.setRotation(tr->angle);
+			window.draw(spr->sprite);
+		}
 	}
+	
 }
