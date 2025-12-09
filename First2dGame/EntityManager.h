@@ -12,7 +12,7 @@
 #include "CHitBox.h"
 #include "CInput.h"
 #include "CLifeSpan.h"
-#include "CPhysiscs.h"
+#include "CPhysiscs.h"  //cphysiscs
 #include "CScore.h"
 #include "CShape.h"
 #include "CSound.h"
@@ -136,8 +136,6 @@ public:
 			return m_hitbox.Get(e->m_id);
 		if constexpr (std::is_same<T, CInput>::value)
 			return m_input.Get(e->m_id);
-		if constexpr (std::is_same<T, CAnimation>::value)
-			return m_animation.Get(e->m_id);
 		if constexpr (std::is_same<T, CLifeSpan>::value)
 			return m_lifespan.Get(e->m_id);
 		if constexpr (std::is_same<T, CPhysics>::value)
@@ -146,8 +144,6 @@ public:
 			return m_score.Get(e->m_id);
 		if constexpr (std::is_same<T, CShape>::value)
 			return m_shape.Get(e->m_id);
-		if constexpr (std::is_same<T, CAnimation>::value)
-			return m_animation.Get(e->m_id);
 		if constexpr (std::is_same<T, CSound>::value)
 			return m_sound.Get(e->m_id);
 		if constexpr (std::is_same<T, CSprite>::value)

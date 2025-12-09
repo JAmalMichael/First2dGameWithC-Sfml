@@ -84,6 +84,9 @@
     <ClCompile Include="SPhysics.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="SGravity.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filereader.h">
@@ -229,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Tilemap.h">
       <Filter>Source Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SGravity.h">
+      <Filter>Source Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
