@@ -147,6 +147,7 @@
     <ClCompile Include="Scene_Menu.cpp" />
     <ClCompile Include="SCollision.cpp" />
     <ClCompile Include="SGravity.cpp" />
+    <ClCompile Include="SHitbox.cpp" />
     <ClCompile Include="SMovement.cpp" />
     <ClCompile Include="SPhysics.cpp" />
     <ClCompile Include="SRender.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="SDamage.h" />
     <ClInclude Include="SGameState.h" />
     <ClInclude Include="SGravity.h" />
+    <ClInclude Include="SHitbox.h" />
     <ClInclude Include="SInput.h" />
     <ClInclude Include="SLevelLoader.h" />
     <ClInclude Include="SMovement.h" />
