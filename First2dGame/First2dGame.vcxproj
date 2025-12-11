@@ -145,6 +145,7 @@
     <ClCompile Include="Scene_Game.cpp" />
     <ClCompile Include="Scene_GameOver.cpp" />
     <ClCompile Include="Scene_Menu.cpp" />
+    <ClCompile Include="SCollision.cpp" />
     <ClCompile Include="SGravity.cpp" />
     <ClCompile Include="SMovement.cpp" />
     <ClCompile Include="SPhysics.cpp" />
