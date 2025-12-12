@@ -30,6 +30,7 @@ void SHitbox::update(float dt, EntityManager& em, Tilemap*)
 						hp->hp -= 1;
 					}
 				}
+			}
 		}
 	}
 }

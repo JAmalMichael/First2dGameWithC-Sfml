@@ -148,6 +148,7 @@
     <ClCompile Include="SCollision.cpp" />
     <ClCompile Include="SGravity.cpp" />
     <ClCompile Include="SHitbox.cpp" />
+    <ClCompile Include="SLifespan.cpp" />
     <ClCompile Include="SMovement.cpp" />
     <ClCompile Include="SPhysics.cpp" />
     <ClCompile Include="SRender.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="SHitbox.h" />
     <ClInclude Include="SInput.h" />
     <ClInclude Include="SLevelLoader.h" />
+    <ClInclude Include="SLifespan.h" />
     <ClInclude Include="SMovement.h" />
     <ClInclude Include="SParticle.h" />
     <ClInclude Include="SPhysics.h" />
