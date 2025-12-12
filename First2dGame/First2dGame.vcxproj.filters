@@ -102,6 +102,12 @@
     <ClCompile Include="SGameState.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="SSound.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SScore.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="filereader.h">
@@ -255,6 +261,9 @@
       <Filter>Source Files\Systems</Filter>
     </ClInclude>
     <ClInclude Include="SLifespan.h">
+      <Filter>Source Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SScore.h">
       <Filter>Source Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>

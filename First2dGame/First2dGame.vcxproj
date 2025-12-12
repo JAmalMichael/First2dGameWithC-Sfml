@@ -153,6 +153,8 @@
     <ClCompile Include="SMovement.cpp" />
     <ClCompile Include="SPhysics.cpp" />
     <ClCompile Include="SRender.cpp" />
+    <ClCompile Include="SScore.cpp" />
+    <ClCompile Include="SSound.cpp" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +204,7 @@
     <ClInclude Include="SParticle.h" />
     <ClInclude Include="SPhysics.h" />
     <ClInclude Include="SRender.h" />
+    <ClInclude Include="SScore.h" />
     <ClInclude Include="SSound.h" />
     <ClInclude Include="SSpawner.h" />
     <ClInclude Include="System.h" />
