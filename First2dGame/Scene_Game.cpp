@@ -1,10 +1,11 @@
 #include "Scene_Game.h"
 #include "Game.h"
 
+
 SceneGame::SceneGame(Game* game) : Scene(game) {
 	m_font.loadFromFile("assets/fonts/Satoshi.ttf");
 	m_label.setFont(m_font);
-	m_label.setString("Game Scene — Press ESC to return to Menu");
+	m_label.setString("Game Scene — Press ESC to return to Menu | Press Enter to Load Game");
 	m_label.setFillColor(sf::Color::Yellow);
 	m_label.setCharacterSize(24);
 	m_label.setPosition(60, 20);
@@ -22,8 +23,21 @@ void SceneGame::sInput()
 	{
 		if (event.type == sf::Event::Closed) m_game->window().close();
 
-		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
-			m_game->changeScene("GAMEOVER");*/
+		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
+		{
+			/*m_game->changeScene("GAMEOVER");*/
+			m_assets.LoadTexture("player", "assets/character/Idle/Idle1.png");
+			m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
+			/*m_assets.LoadTexture("tile", "assets/enemy/Idle/blackIdle1.png");*/
+			m_assets.LoadTexture("background", "assets/structures/Background.png");
+
+			m_assets.LoadMusic("bgs", "assets/audio/start.wav");
+
+			m_assets.GetMusic("bgs").setLoop(true);
+			m_assets.GetMusic("bgs").play();
+
+			
+		}
 
 		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
 	}

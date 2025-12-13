@@ -55,7 +55,7 @@ sf::SoundBuffer AssetsManager::GetSound(const std::string& name)
 	return m_sounds[name];
 }
 
-//sf::Music AssetsManager::GetMusic(const std::string& name)
-//{
-//	return *m_music.at(name);
-//}
+sf::Music& AssetsManager::GetMusic(const std::string& name)
+{
+	return *m_music.at(name);
+}
