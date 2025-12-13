@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assetsmanager.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assetsmanager.h" />
     <ClInclude Include="CAI.h" />
     <ClInclude Include="CAnimation.h" />
     <ClInclude Include="CBoxCollider.h" />

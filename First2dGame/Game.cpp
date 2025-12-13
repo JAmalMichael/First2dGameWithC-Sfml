@@ -5,6 +5,7 @@
 
 Game::Game(): m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
 {
+
 	m_currentScene = "MENU";
 	registerScene("MENU", std::make_shared<SceneMenu>(this));
 	registerScene("GAME", std::make_shared<SceneGame>(this));
@@ -14,7 +15,7 @@ Game::Game(): m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
 void Game::run() {
 	while (m_window.isOpen()) {
 		m_scenes[m_currentScene]->sInput();
-		//m_scenes[m_currentScene]->update();
+		m_scenes[m_currentScene]->update();
 		m_scenes[m_currentScene]->sRender();
 	}
 }

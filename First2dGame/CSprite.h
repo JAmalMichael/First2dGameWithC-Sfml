@@ -10,5 +10,9 @@ struct CSprite
 	CSprite() {};
 	CSprite(sf::Texture *tex) : texture(tex) {
 		sprite.setTexture(*tex);
+		sprite.setOrigin(
+			tex->getSize().x / 2.f,
+			tex->getSize().y / 2.f
+		);
 	}
 };
