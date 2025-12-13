@@ -7,7 +7,9 @@ void SSound::update(float dt, EntityManager& em, Tilemap*)
 		if (em.GetComponent<CSound>(e))
 		{
 			auto* sd = em.GetComponent<CSound>(e);
-			//attach buffer
+			sf::Sound sound;
+			sound.setBuffer(m_assets.GetSound("slash"));
+			sound.play();
 		}
 	}
 }

@@ -30,13 +30,15 @@ void SceneGame::sInput()
 			m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
 			/*m_assets.LoadTexture("tile", "assets/enemy/Idle/blackIdle1.png");*/
 			m_assets.LoadTexture("background", "assets/structures/Background.png");
+			//m_assets.LoadSound("slash", "assets/audio/slash.wav");
 
 			m_assets.LoadMusic("bgs", "assets/audio/start.wav");
 
-			m_assets.GetMusic("bgs").setLoop(true);
+			m_assets.GetMusic("bgs").setLoop(false);
 			m_assets.GetMusic("bgs").play();
 
-			
+			SpawnPlayer();
+			SpawnEnemy();
 		}
 
 		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
@@ -49,4 +51,51 @@ void SceneGame::sRender()
 	m_game->window().clear();
 	m_game->window().draw(m_label);
 	m_game->window().display();
+}
+
+void SceneGame::SpawnPlayer()
+{
+	auto p = m_entities.AddEntity("player");
+
+	m_entities.AddComponent<CTransform>(
+		p,
+		sf::Vector2f(400, 300),
+		sf::Vector2f(0, 0),
+		sf::Vector2f(1, 1),
+		0.f
+	);
+
+	m_entities.AddComponent<CSprite>(
+		p,
+		m_assets.GetTexture("player")
+	);
+
+	m_entities.AddComponent<CInput>(p);
+
+}
+
+void SceneGame::SpawnEnemy()
+{
+	auto e = m_entities.AddEntity("enemy");
+	 
+	m_entities.AddComponent<CTransform>(
+		e, sf::Vector2f(800, 300), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), sf::Vector2f(1, 1), 0
+	);
+
+	m_entities.AddComponent<CSprite>(
+		e, m_assets.GetTexture("enemy")
+	);
+}
+
+
+void SceneGame::AddbackGround() {
+	auto background = m_entities.AddEntity("background");
+
+	m_entities.AddComponent<CSprite>(
+		background, m_assets.GetTexture("background")
+	);
+
+	m_entities.AddComponent<CTransform>(
+		background, sf::Vector2f(1000, 720), sf::Vector2f(0, 0), sf::Vector2f(0, 0), 0
+	);
 }

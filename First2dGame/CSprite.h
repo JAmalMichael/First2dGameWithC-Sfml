@@ -5,14 +5,14 @@
 struct CSprite
 {
 	sf::Sprite sprite;
-	sf::Texture *texture = nullptr;
+	/*sf::Texture *texture = nullptr;*/
 
-	CSprite() {};
-	CSprite(sf::Texture *tex) : texture(tex) {
-		sprite.setTexture(*tex);
+	CSprite() = default;
+	CSprite(const sf::Texture& tex) {
+		sprite.setTexture(tex);
 		sprite.setOrigin(
-			tex->getSize().x / 2.f,
-			tex->getSize().y / 2.f
+			tex.getSize().x / 2.f,
+			tex.getSize().y / 2.f
 		);
 	}
 };
