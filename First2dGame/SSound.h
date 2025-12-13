@@ -1,6 +1,7 @@
 #pragma once
 #include "EntityManager.h"
 #include "Tilemap.h"
+#include "SFML/Audio.hpp"
 
 class SSound
 {
