@@ -12,7 +12,6 @@ void SRender::render(EntityManager& em, sf::RenderWindow& window)
 		if (!tr || !sp) continue;
 
 		sp->sprite.setPosition(tr->position);
-		//sp->sprite.setScale(tr->scale);
 		sp->sprite.setRotation(tr->angle);
 		window.draw(sp->sprite);
 	}
@@ -27,8 +26,8 @@ void SRender::render(EntityManager& em, sf::RenderWindow& window)
 			auto* spr = em.GetComponent<CSprite>(e);
 			auto* tr = em.GetComponent<CTransform>(e);
 
+			/*spr->sprite.setScale(2.f, 2.f);*/
 			spr->sprite.setPosition(tr->position);
-			//spr->sprite.setScale(tr->scale);
 			spr->sprite.setRotation(tr->angle);
 			window.draw(spr->sprite);
 		}

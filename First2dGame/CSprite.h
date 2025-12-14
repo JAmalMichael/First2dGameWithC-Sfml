@@ -5,7 +5,6 @@
 struct CSprite
 {
 	sf::Sprite sprite;
-	/*sf::Texture *texture = nullptr;*/
 
 	CSprite() = default;
 	CSprite(const sf::Texture& tex) {

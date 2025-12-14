@@ -6,7 +6,7 @@
 SceneGame::SceneGame(Game* game) : Scene(game) {
 	m_font.loadFromFile("assets/fonts/Satoshi.ttf");
 	m_label.setFont(m_font);
-	//m_label.setString("Game Scene — Press ESC to return to Menu | Press Enter to Load Game");
+	m_label.setString("Game Scene — Press ESC to return to Menu | Press Enter to Load Game");
 	m_label.setFillColor(sf::Color::Yellow);
 	m_label.setCharacterSize(24);
 	m_label.setPosition(60, 20);
@@ -33,48 +33,33 @@ void SceneGame::sInput()
 }
 
 
-void SceneGame::onEnter()
-{
-	m_assets.LoadTexture("background", "assets/structures/Background.png");
-	m_assets.LoadTexture("player", "assets/character/Idle/Idle1.png");
-	m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
 
-	m_assets.LoadMusic("bgs", "assets/audio/start.wav");
-	m_assets.GetMusic("bgs").play();
-
-	AddbackGround();
-	SpawnPlayer();
-	SpawnEnemy();
-
-	std::cout << "SceneGame::onEnter called!" << std::endl;
-
-}
 
 
 void SceneGame::AddbackGround() {
 	auto bg = m_entities.AddEntity("background");
 
-	auto sprite = m_entities.AddComponent<CSprite>(
+	auto spr = m_entities.AddComponent<CSprite>(
 		bg, m_assets.GetTexture("background")
 	);
 
 	//background origin set to 0
-	sprite->sprite.setOrigin(0.f, 0.f);
+	spr->sprite.setOrigin(0.f, 0.f);
 
-	//tint background
-	sprite->sprite.setColor(sf::Color(255, 255, 255, 180));
+	
+	spr->sprite.setColor(sf::Color::White);
 
 	//scaling background to window size
 	const sf::Vector2u winSize = m_game->window().getSize();
 	const sf::Vector2u texSize = m_assets.GetTexture("background").getSize();
 
-	sprite->sprite.setScale(
+	spr->sprite.setScale(
 		static_cast<float>(winSize.x) / texSize.x,
 		static_cast<float>(winSize.y) / texSize.y
 	);
 
 	m_entities.AddComponent<CTransform>(
-		bg, sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), sf::Vector2f(0, 0), 0.f
+		bg, sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), 0.f
 	);
 } 
 
@@ -88,7 +73,6 @@ void SceneGame::SpawnPlayer()
 		p,
 		sf::Vector2f(400, 300),
 		sf::Vector2f(0, 0),
-		sf::Vector2f(2.f, 2.f),
 		0.f
 	);
 
@@ -106,7 +90,7 @@ void SceneGame::SpawnEnemy()
 	auto e = m_entities.AddEntity("enemy");
 	 
 	m_entities.AddComponent<CTransform>(
-		e, sf::Vector2f(800, 300), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), sf::Vector2f(2.f, 2.f), 0
+		e, sf::Vector2f(800, 300), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), 0
 	);
 
 	m_entities.AddComponent<CSprite>(
@@ -114,9 +98,37 @@ void SceneGame::SpawnEnemy()
 	);
 }
 
+
+void SceneGame::onEnter()
+{
+	m_assets.LoadTexture("background", "assets/structures/Background.png");
+	m_assets.LoadTexture("player", "assets/character/Idle/Idle1.png");
+	m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
+
+	m_assets.LoadMusic("bgs", "assets/audio/start.wav");
+	m_assets.GetMusic("bgs").play();
+
+	AddbackGround();
+	SpawnPlayer();
+	SpawnEnemy();
+
+	std::cout << "SceneGame::onEnter called!" << std::endl;
+
+	auto t1 = m_assets.GetTexture("player");
+	std::cout << "Player texture size: " << t1.getSize().x << ", " << t1.getSize().y << std::endl;
+
+	auto t2 = m_assets.GetTexture("enemy");
+	std::cout << "Enemy texture size: " << t2.getSize().x << ", " << t2.getSize().y << std::endl;
+
+	auto t3 = m_assets.GetTexture("background");
+	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
+
+
+}
+
 void SceneGame::sRender()
 {
-	m_game->window().clear();
+	m_game->window().clear(sf::Color::Black);
 	m_game->window().draw(m_label);
 	m_render.render(m_entities, m_game->window());
 	m_game->window().display();

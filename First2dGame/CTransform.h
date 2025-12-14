@@ -6,10 +6,9 @@
 struct CTransform {
 	sf::Vector2f position;
 	sf::Vector2f velocity;
-	sf::Vector2f scale;
 	float angle = 0.f;
 
 	CTransform() = default;
-	CTransform(const sf::Vector2f &pos,const sf::Vector2f &vel, const sf::Vector2f &sca, float ang) :
-		position(pos), velocity(vel), angle(ang), scale(sca) {}
+	CTransform(const sf::Vector2f &pos,const sf::Vector2f &vel, float ang) :
+		position(pos), velocity(vel), angle(ang) {}
 };
