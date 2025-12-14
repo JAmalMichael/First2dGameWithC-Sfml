@@ -3,14 +3,16 @@
 #include "Scene_Game.h"
 #include "Scene_GameOver.h"
 
-Game::Game(): m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
+Game::Game() : m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
 {
-
-	m_currentScene = "MENU";
 	registerScene("MENU", std::make_shared<SceneMenu>(this));
 	registerScene("GAME", std::make_shared<SceneGame>(this));
 	registerScene("GAMEOVER", std::make_shared<SceneGameOver>(this));
+
+	m_currentScene = "MENU";
+	m_scenes[m_currentScene]->onEnter();   // <-- initialize first scene
 }
+
 
 void Game::run() {
 	while (m_window.isOpen()) {
@@ -23,6 +25,7 @@ void Game::run() {
 void Game::changeScene(const std::string& name)
 {
 	m_currentScene = name;
+	m_scenes[m_currentScene]->onEnter();
 }
 
 void Game::registerScene(const std::string& name, std::shared_ptr<Scene> scene)

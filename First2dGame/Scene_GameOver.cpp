@@ -12,6 +12,8 @@ SceneGameOver::SceneGameOver(Game* game) : Scene(game) {
 
 void SceneGameOver::update() {}
 
+void SceneGameOver::onEnter() {};
+
 void SceneGameOver::sInput() {
     sf::Event event;
     while (m_game->window().pollEvent(event)) {

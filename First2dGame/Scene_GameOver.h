@@ -13,6 +13,7 @@ public:
 	void sInput() override;
 	void update() override;
 	void sRender() override;
+	void onEnter() override;
 	void onEnd() override {}
 
 };

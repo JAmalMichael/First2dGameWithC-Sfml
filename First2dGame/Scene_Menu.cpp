@@ -16,6 +16,8 @@ void SceneMenu::update() {
 	//static menu
 };
 
+void SceneMenu::onEnter() {};
+
 
 void SceneMenu::sInput() {
 	sf::Event event;

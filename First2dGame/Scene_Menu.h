@@ -12,5 +12,6 @@ public:
 	void update() override;
 	void sInput() override;
 	void sRender() override;
+	void onEnter() override;
 	void onEnd() override {};
 };

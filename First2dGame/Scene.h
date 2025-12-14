@@ -16,6 +16,7 @@ public:
 	virtual void update() = 0;
 	virtual void sInput() = 0;
 	virtual void sRender() = 0;
+	virtual void onEnter() = 0;
 	virtual void onEnd() = 0;
 
 

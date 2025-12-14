@@ -5,7 +5,9 @@
 void AssetsManager::LoadTexture(const std::string& name, const std::string& path)
 {
 	sf::Texture tex;
-	tex.loadFromFile(path);
+	if (!tex.loadFromFile(path))
+		throw std::runtime_error("Failed to load texture: " + path);
+	
 	m_texture.emplace(name, std::move(tex));
 }
 
@@ -16,16 +18,16 @@ void AssetsManager::LoadFont(const std::string& name, const std::string& path)
 		throw std::runtime_error("Failed to load font: " + path);
 
 	m_fonts.emplace(name, std::move(font));
-	/*/m_fonts[name].loadFromFile(path);
-	sf::Font font;
-	font.loadFromFile(path);
-	m_fonts[name] = font;*/
+	
 }
 
 void AssetsManager::LoadSound(const std::string& name, const std::string& path)
 {
 	sf::SoundBuffer sound;
-	sound.loadFromFile(path);
+	if (!sound.loadFromFile(path))
+	{
+		throw std::runtime_error("Failed to load sound" + path);
+	};
 	m_sounds.emplace(name, std::move(sound));
 }
 
