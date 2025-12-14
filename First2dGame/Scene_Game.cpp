@@ -34,8 +34,6 @@ void SceneGame::sInput()
 
 
 
-
-
 void SceneGame::AddbackGround() {
 	auto bg = m_entities.AddEntity("background");
 
@@ -47,7 +45,7 @@ void SceneGame::AddbackGround() {
 	spr->sprite.setOrigin(0.f, 0.f);
 
 	
-	spr->sprite.setColor(sf::Color::White);
+	//spr->sprite.setColor(sf::Color::White);
 
 	//scaling background to window size
 	const sf::Vector2u winSize = m_game->window().getSize();
@@ -72,7 +70,7 @@ void SceneGame::SpawnPlayer()
 	m_entities.AddComponent<CTransform>(
 		p,
 		sf::Vector2f(400, 300),
-		sf::Vector2f(0, 0),
+		sf::Vector2f(0.f, 0.f),
 		0.f
 	);
 

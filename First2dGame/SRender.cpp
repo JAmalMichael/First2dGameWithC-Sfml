@@ -26,7 +26,7 @@ void SRender::render(EntityManager& em, sf::RenderWindow& window)
 			auto* spr = em.GetComponent<CSprite>(e);
 			auto* tr = em.GetComponent<CTransform>(e);
 
-			/*spr->sprite.setScale(2.f, 2.f);*/
+			
 			spr->sprite.setPosition(tr->position);
 			spr->sprite.setRotation(tr->angle);
 			window.draw(spr->sprite);

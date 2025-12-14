@@ -44,9 +44,9 @@ void AssetsManager::LoadMusic(const std::string& name, const std::string& path)
 }
 
 
-sf::Texture AssetsManager::GetTexture(const std::string& name)
+sf::Texture& AssetsManager::GetTexture(const std::string& name)
 {
-	return m_texture.at(name);
+	return m_texture[name];
 }
 
 sf::Font AssetsManager::GetFont(const std::string& name)
