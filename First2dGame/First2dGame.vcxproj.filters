@@ -278,5 +278,8 @@
     <ClInclude Include="Assetsmanager.h">
       <Filter>Source Files\Assets</Filter>
     </ClInclude>
+    <ClInclude Include="CTileMap.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -102,6 +102,8 @@ void SceneGame::onEnter()
 	m_assets.LoadTexture("background", "assets/structures/Background.png");
 	m_assets.LoadTexture("player", "assets/character/Idle/Idle1.png");
 	m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
+	m_assets.LoadTexture("tile1", "assets/structures/Tile1.png");
+	m_assets.LoadTexture("tile2", "assets/structures/Tile2.png");
 
 	m_assets.LoadMusic("bgs", "assets/audio/start.wav");
 	m_assets.GetMusic("bgs").play();
@@ -120,6 +122,29 @@ void SceneGame::onEnter()
 
 	auto t3 = m_assets.GetTexture("background");
 	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
+
+
+}
+
+void SceneGame::AddTileMap()
+{
+	auto tileMap = m_entities.AddEntity("tilemap");
+
+	auto tileComp = m_entities.AddComponent<CTileMap>(tileMap);
+
+	tileComp->texture = &m_assets.GetTexture("tile1");
+	tileComp->tileSize = 32;
+	tileComp->width = 10;
+	tileComp->height = 4;
+
+	std::vector<int> level = {
+		0,0,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0,
+		1,1,1,1,1,1,1,1,1,1,
+		2,2,2,2,2,2,2,2,2,2
+	};
+
+	tileComp->vertices.resize(tileComp->width * tileComp->height * 4);
 
 
 }

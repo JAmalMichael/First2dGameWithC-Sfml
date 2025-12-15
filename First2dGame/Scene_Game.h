@@ -23,4 +23,5 @@ public:
 	void SpawnPlayer();
 	void SpawnEnemy();
 	void AddbackGround();
+	void AddTileMap();
 };

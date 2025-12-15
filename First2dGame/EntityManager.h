@@ -20,6 +20,7 @@
 #include "CState.h"
 #include "CTag.h"
 #include "CTransform.h"
+#include "CTileMap.h"
 
 
 class EntityManager
@@ -45,6 +46,7 @@ class EntityManager
 	ComponentPool<CGravity> m_gravity;
 	ComponentPool<CBoxCollider> m_boxcollider;
 	ComponentPool<CAnimation> m_animation;
+	ComponentPool<CTileMap> m_tile;
 	
 public:
 	//add entities
@@ -116,7 +118,8 @@ public:
 			return new (m_boxcollider.Add(e->m_id)) T(std::forward<Args>(args)...);
 		if constexpr (std::is_same<T, CAnimation>::value)
 			return new (m_animation.Add(e->m_id)) T(std::forward<Args>(args)...);
-
+		if constexpr (std::is_same<T, CTileMap>::value)
+			return new (m_animation.Add(e->m_id)) T(std::forward<Args>(args)...);
 		return nullptr;
 	};
 
@@ -154,7 +157,8 @@ public:
 			return m_tag.Get(e->m_id);
 		if constexpr (std::is_same<T, CTransform>::value)
 			return m_transform.Get(e->m_id);
-
+		if constexpr (std::is_same<T, CTileMap>::value)
+			return m_transform.Get(e->m_id);
 		return nullptr;
 	};
 };

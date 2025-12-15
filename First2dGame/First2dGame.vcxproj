@@ -178,6 +178,7 @@
     <ClInclude Include="CSprite.h" />
     <ClInclude Include="CState.h" />
     <ClInclude Include="CTag.h" />
+    <ClInclude Include="CTileMap.h" />
     <ClInclude Include="CTransform.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
