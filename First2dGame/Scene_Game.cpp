@@ -12,25 +12,7 @@ SceneGame::SceneGame(Game* game) : Scene(game) {
 	m_label.setPosition(60, 20);
 }
 
-void SceneGame::update()
-{
-	m_entities.update();
-}
 
-void SceneGame::sInput()
-{
-	sf::Event event;
-	while (m_game->window().pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed) m_game->window().close();
-		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
-		{
-		}*/
-
-		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
-	}
-
-}
 
 
 
@@ -60,6 +42,57 @@ void SceneGame::AddbackGround() {
 		bg, sf::Vector2f(0.f, 0.f), sf::Vector2f(0.f, 0.f), 0.f
 	);
 } 
+
+
+//void SceneGame::AddTileMap()
+//{
+//	auto tileMap = m_entities.AddEntity("tilemap");
+//	auto tileComp = m_entities.AddComponent<CTileMap>(tileMap);
+//
+//	tileComp->texture = &m_assets.GetTexture("tile1");
+//	tileComp->tileSize = 32;
+//	tileComp->width = 10;
+//	tileComp->height = 4;
+//
+//	tileComp->vertices.setPrimitiveType(sf::Quads);
+//	tileComp->vertices.clear();
+//
+//	std::vector<int> level = {
+//		0,0,0,0,0,0,0,0,0,0,
+//		0,0,0,0,0,0,0,0,0,0,
+//		1,1,1,1,1,1,1,1,1,1,
+//		1,1,1,1,1,1,1,1,1,1
+//	};
+//
+//	for (unsigned y = 0; y < tileComp->height; ++y)
+//	{
+//		for (unsigned x = 0; x < tileComp->width; ++x)
+//		{
+//			int tile = level[x + y * tileComp->width];
+//			if (tile == 0) continue;
+//
+//			sf::Vertex quad[4];
+//
+//			quad[0].position = { x * 32.f, y * 32.f };
+//			quad[1].position = { (x + 1) * 32.f, y * 32.f };
+//			quad[2].position = { (x + 1) * 32.f, (y + 1) * 32.f };
+//			quad[3].position = { x * 32.f, (y + 1) * 32.f };
+//
+//			quad[0].texCoords = { 0.f, 0.f };
+//			quad[1].texCoords = { 32.f, 0.f };
+//			quad[2].texCoords = { 32.f, 32.f };
+//			quad[3].texCoords = { 0.f, 32.f };
+//
+//			for (int i = 0; i < 4; i++)
+//				quad[i].color = sf::Color::White;
+//
+//			tileComp->vertices.append(quad[0]);
+//			tileComp->vertices.append(quad[1]);
+//			tileComp->vertices.append(quad[2]);
+//			tileComp->vertices.append(quad[3]);
+//		}
+//	}
+//}
 
 
 
@@ -109,7 +142,7 @@ void SceneGame::onEnter()
 	m_assets.GetMusic("bgs").play();
 
 	AddbackGround();
-	AddTileMap();
+	//AddTileMap();
 	SpawnPlayer();
 	SpawnEnemy();
 
@@ -129,61 +162,28 @@ void SceneGame::onEnter()
 
 }
 
-void SceneGame::AddTileMap()
+
+void SceneGame::sInput()
 {
-	auto tileMap = m_entities.AddEntity("tilemap");
-
-	auto tileComp = m_entities.AddComponent<CTileMap>(tileMap);
-
-
-	tileComp->texture = &m_assets.GetTexture("tile1");
-	tileComp->tileSize = 32;
-	tileComp->width = 10;
-	tileComp->height = 4;
-
-
-	std::vector<int> level = {
-		0,0,0,0,0,0,0,0,0,0,
-		0,0,0,0,0,0,0,0,0,0,
-		1,1,1,1,1,1,1,1,1,1,
-		1,1,1,1,1,1,1,1,1,1
-	};
-
-	tileComp->vertices.resize(tileComp->width * tileComp->height * 4);
-
-	//for (unsigned i = 0; i < tileComp->vertices.getVertexCount(); i++)
-	//{
-	//	tileComp->vertices[i].position = sf::Vector2f(0.f, 0.f);
-	//	tileComp->vertices[i].texCoords = sf::Vector2f(0.f, 0.f);
-	//}
-
-
-	for (unsigned y = 0; y < tileComp->height; ++y)
+	sf::Event event;
+	while (m_game->window().pollEvent(event))
 	{
-		for (unsigned x = 0; x < tileComp->width; ++x)
+		if (event.type == sf::Event::Closed) m_game->window().close();
+		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
 		{
-			int tile = level[x + y * tileComp->width];
-			if (tile == 0) continue;
+		}*/
 
-			int tu = tile - 1;
-
-			sf::Vertex* quad = &tileComp->vertices[(x + y * tileComp->width) * 4];
-
-			quad[0].position = { x * 32.f, y * 32.f };
-			quad[1].position = { (x + 1) * 32.f, y * 32.f };
-			quad[2].position = { (x + 1) * 32.f, (y + 1) * 32.f };
-			quad[3].position = { x * 32.f, (y + 1) * 32.f };
-
-			quad[0].texCoords = { 0.f, 0.f };
-			quad[1].texCoords = { 32.f, 0.f };
-			quad[2].texCoords = { 32.f, 32.f };
-			quad[3].texCoords = { 0.f, 32.f };
-
-			quad[0].color = quad[1].color = quad[2].color = quad[3].color = sf::Color::White;
-
-		}
+		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
 	}
+
 }
+
+
+void SceneGame::update()
+{
+	m_entities.update();
+}
+
 
 void SceneGame::sRender()
 {
@@ -205,8 +205,9 @@ void SceneGame::sRender()
 	t_render.render(m_entities, m_game->window());
 	//draw other entities last
 	m_render.render(m_entities, m_game->window());
+
+	//game menu
 	m_game->window().draw(m_label);
+	//game draw
 	m_game->window().display();
 }
-
-

@@ -11,8 +11,5 @@ struct CTileMap
 	unsigned height = 0;
 	unsigned tileSize = 32;
 
-	CTileMap()
-	{
-		vertices.setPrimitiveType(sf::Quads);
-	}
+	CTileMap() = default;
 };
