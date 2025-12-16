@@ -46,7 +46,7 @@ class EntityManager
 	ComponentPool<CGravity> m_gravity;
 	ComponentPool<CBoxCollider> m_boxcollider;
 	ComponentPool<CAnimation> m_animation;
-	ComponentPool<CTileMap> m_tile;
+	ComponentPool<CTileMap> m_tilemap;
 	
 public:
 	//add entities
@@ -158,7 +158,7 @@ public:
 		if constexpr (std::is_same<T, CTransform>::value)
 			return m_transform.Get(e->m_id);
 		if constexpr (std::is_same<T, CTileMap>::value)
-			return m_transform.Get(e->m_id);
+			return m_tilemap.Get(e->m_id);
 		return nullptr;
 	};
 };

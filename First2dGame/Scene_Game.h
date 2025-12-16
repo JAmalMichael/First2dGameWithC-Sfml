@@ -3,6 +3,7 @@
 #include "Assetsmanager.h"
 #include "EntityManager.h"
 #include "SRender.h"
+#include "STileRender.h"
 
 class SceneGame : public Scene
 {
@@ -12,6 +13,8 @@ private:
 	AssetsManager m_assets;
 	EntityManager m_entities;
 	SRender m_render;
+	STileRender t_render;
+	
 
 public:
 	SceneGame(Game* game);

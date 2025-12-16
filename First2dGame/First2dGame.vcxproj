@@ -157,6 +157,7 @@
     <ClCompile Include="SRender.cpp" />
     <ClCompile Include="SScore.cpp" />
     <ClCompile Include="SSound.cpp" />
+    <ClCompile Include="STileRender.cpp" />
     <ClCompile Include="System.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -109,7 +109,7 @@ void SceneGame::onEnter()
 	m_assets.GetMusic("bgs").play();
 
 	AddbackGround();
-	AddTileMap();
+	//AddTileMap();
 	SpawnPlayer();
 	SpawnEnemy();
 
@@ -124,6 +124,8 @@ void SceneGame::onEnter()
 	auto t3 = m_assets.GetTexture("background");
 	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
 
+	auto t4 = m_assets.GetTexture("tile1");
+	std::cout << "Tile1 texture size: " << t4.getSize().x << ", " << t4.getSize().y << std::endl;
 
 }
 
@@ -179,6 +181,7 @@ void SceneGame::sRender()
 	m_game->window().clear(sf::Color::Black);
 	m_game->window().draw(m_label);
 	m_render.render(m_entities, m_game->window());
+	//t_render.render(m_entities, m_game->window());
 	m_game->window().display();
 }
 
