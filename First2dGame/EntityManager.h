@@ -68,7 +68,7 @@ public:
 		);
 	};
 
-	//Getentities
+	//Get entities
 	std::vector<std::shared_ptr<Entity>>& GetEntities()
 	{
 		return m_entities;

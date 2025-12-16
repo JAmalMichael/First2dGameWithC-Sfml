@@ -6,8 +6,8 @@
 SceneGame::SceneGame(Game* game) : Scene(game) {
 	m_font.loadFromFile("assets/fonts/Satoshi.ttf");
 	m_label.setFont(m_font);
-	m_label.setString("Game Scene — Press ESC to return to Menu | Press Enter to Load Game");
-	m_label.setFillColor(sf::Color::Yellow);
+	m_label.setString("Game Scene — Press ESC to return to Menu | Press keys to move player");
+	m_label.setFillColor(sf::Color::Black);
 	m_label.setCharacterSize(24);
 	m_label.setPosition(60, 20);
 }
@@ -109,7 +109,7 @@ void SceneGame::onEnter()
 	m_assets.GetMusic("bgs").play();
 
 	AddbackGround();
-	//AddTileMap();
+	AddTileMap();
 	SpawnPlayer();
 	SpawnEnemy();
 
@@ -135,10 +135,12 @@ void SceneGame::AddTileMap()
 
 	auto tileComp = m_entities.AddComponent<CTileMap>(tileMap);
 
+
 	tileComp->texture = &m_assets.GetTexture("tile1");
 	tileComp->tileSize = 32;
 	tileComp->width = 10;
 	tileComp->height = 4;
+
 
 	std::vector<int> level = {
 		0,0,0,0,0,0,0,0,0,0,
@@ -148,6 +150,13 @@ void SceneGame::AddTileMap()
 	};
 
 	tileComp->vertices.resize(tileComp->width * tileComp->height * 4);
+
+	//for (unsigned i = 0; i < tileComp->vertices.getVertexCount(); i++)
+	//{
+	//	tileComp->vertices[i].position = sf::Vector2f(0.f, 0.f);
+	//	tileComp->vertices[i].texCoords = sf::Vector2f(0.f, 0.f);
+	//}
+
 
 	for (unsigned y = 0; y < tileComp->height; ++y)
 	{
@@ -165,23 +174,38 @@ void SceneGame::AddTileMap()
 			quad[2].position = { (x + 1) * 32.f, (y + 1) * 32.f };
 			quad[3].position = { x * 32.f, (y + 1) * 32.f };
 
-			quad[0].texCoords = { tu * 32.f, 0 };
-			quad[1].texCoords = { (tu + 1) * 32.f, 0 };
-			quad[2].texCoords = { (tu + 1) * 32.f, 32.f };
-			quad[3].texCoords = { tu * 32.f, 32.f };
+			quad[0].texCoords = { 0.f, 0.f };
+			quad[1].texCoords = { 32.f, 0.f };
+			quad[2].texCoords = { 32.f, 32.f };
+			quad[3].texCoords = { 0.f, 32.f };
 
+			quad[0].color = quad[1].color = quad[2].color = quad[3].color = sf::Color::White;
 
 		}
 	}
-	
 }
 
 void SceneGame::sRender()
 {
 	m_game->window().clear(sf::Color::Black);
-	m_game->window().draw(m_label);
+	//draw background first
+	for (auto e : m_entities.GetEntities("background"))
+	{
+		auto spr = m_entities.GetComponent<CSprite>(e);
+		auto trans = m_entities.GetComponent<CTransform>(e);
+
+		if (spr && trans)
+		{
+			spr->sprite.setPosition(trans->position);
+			m_game->window().draw(spr->sprite);
+		}
+	}
+
+	//draw tile second
+	t_render.render(m_entities, m_game->window());
+	//draw other entities last
 	m_render.render(m_entities, m_game->window());
-	//t_render.render(m_entities, m_game->window());
+	m_game->window().draw(m_label);
 	m_game->window().display();
 }
 
