@@ -211,6 +211,7 @@
     <ClInclude Include="SScore.h" />
     <ClInclude Include="SSound.h" />
     <ClInclude Include="SSpawner.h" />
+    <ClInclude Include="STileRender.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="Typesdef.h" />

@@ -281,5 +281,8 @@
     <ClInclude Include="CTileMap.h">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="STileRender.h">
+      <Filter>Source Files\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

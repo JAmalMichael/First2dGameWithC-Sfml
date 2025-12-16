@@ -109,6 +109,7 @@ void SceneGame::onEnter()
 	m_assets.GetMusic("bgs").play();
 
 	AddbackGround();
+	AddTileMap();
 	SpawnPlayer();
 	SpawnEnemy();
 
@@ -141,12 +142,36 @@ void SceneGame::AddTileMap()
 		0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,
 		1,1,1,1,1,1,1,1,1,1,
-		2,2,2,2,2,2,2,2,2,2
+		1,1,1,1,1,1,1,1,1,1
 	};
 
 	tileComp->vertices.resize(tileComp->width * tileComp->height * 4);
 
+	for (unsigned y = 0; y < tileComp->height; ++y)
+	{
+		for (unsigned x = 0; x < tileComp->width; ++x)
+		{
+			int tile = level[x + y * tileComp->width];
+			if (tile == 0) continue;
 
+			int tu = tile - 1;
+
+			sf::Vertex* quad = &tileComp->vertices[(x + y * tileComp->width) * 4];
+
+			quad[0].position = { x * 32.f, y * 32.f };
+			quad[1].position = { (x + 1) * 32.f, y * 32.f };
+			quad[2].position = { (x + 1) * 32.f, (y + 1) * 32.f };
+			quad[3].position = { x * 32.f, (y + 1) * 32.f };
+
+			quad[0].texCoords = { tu * 32.f, 0 };
+			quad[1].texCoords = { (tu + 1) * 32.f, 0 };
+			quad[2].texCoords = { (tu + 1) * 32.f, 32.f };
+			quad[3].texCoords = { tu * 32.f, 32.f };
+
+
+		}
+	}
+	
 }
 
 void SceneGame::sRender()

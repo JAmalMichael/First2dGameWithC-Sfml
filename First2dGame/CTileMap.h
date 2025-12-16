@@ -5,11 +5,11 @@
 
 struct CTileMap
 {
+	sf::VertexArray vertices;
+	const sf::Texture* texture = nullptr;
 	unsigned width = 0;
 	unsigned height = 0;
 	unsigned tileSize = 32;
-	const sf::Texture* texture = nullptr;
-	sf::VertexArray vertices;
 
 	CTileMap()
 	{
