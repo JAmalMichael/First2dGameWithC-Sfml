@@ -15,7 +15,7 @@ private:
 	EntityManager m_entities;
 	SRender m_render;
 	STileRender t_render;
-	Tilemap tileMap;
+	Tilemap m_tileMap;
 	
 
 public:

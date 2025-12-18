@@ -15,8 +15,6 @@ SceneGame::SceneGame(Game* game) : Scene(game) {
 
 
 
-
-
 void SceneGame::AddbackGround() {
 	auto bg = m_entities.AddEntity("background");
 
@@ -52,14 +50,14 @@ void SceneGame::AddTileMap()
 	landTexture.loadFromFile("assets/structures/Tile1.png");
 	waterTexture.loadFromFile("assets/structures/Tile2.png");
 
-	Tilemap tileMap;
-	tileMap.load(
+	m_tileMap.load(
 		landTexture,
 		waterTexture,
 		32,
-		30,
-		1
+		30
 	);
+
+	m_tileMap.setPosition(0.f, 300.f);
 
 }
 
@@ -222,7 +220,7 @@ void SceneGame::sRender()
 
 	//draw tile second
 	/*t_render.render(m_entities, m_game->window());*/
-	m_game->window().draw(tileMap);
+	m_game->window().draw(m_tileMap);
 
 	//draw other entities last
 	m_render.render(m_entities, m_game->window());

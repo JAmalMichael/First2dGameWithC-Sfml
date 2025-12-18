@@ -1,42 +1,44 @@
 #include "Tilemap.h"
 
-bool Tilemap::load(const sf::Texture& landTex,
+bool Tilemap::load(
+	const sf::Texture& landTex,
 	const sf::Texture& waterTex,
 	unsigned int tileSize,
-	unsigned int width,
-	unsigned int height)
+	unsigned int width)
 {
 	m_landtexture = &landTex;
 	m_watertexture = &waterTex;
 
-	m_vertices.setPrimitiveType(sf::Quads);
-	m_vertices.resize(width * height * 4);
+	m_landVertices.setPrimitiveType(sf::Quads);
+	m_waterVertices.setPrimitiveType(sf::Quads);
 
-	for (unsigned int x = 0; x < width; ++x)
-	{
-		for (unsigned int y = 0; y < height; ++y)
+
+		for (unsigned int x = 0; x < width; ++x)
 		{
 			bool isLand = (x < 20);
 
-			sf::Vertex* quad = &m_vertices[(x + y * width) * 4];
+			sf::VertexArray& verts = isLand ? m_landVertices : m_waterVertices;
+			verts.resize(verts.getVertexCount() + 4);
 
-			quad[0].position = { x * float(tileSize), y * float(tileSize) };
-			quad[1].position = { (x + 1) * float(tileSize), y * float(tileSize) };
-			quad[2].position = { (x + 1) * float(tileSize), (y + 1) * float(tileSize) };
-			quad[3].position = { x * float(tileSize), (y + 1) * float(tileSize) };
+			sf::Vertex* quad = &verts[verts.getVertexCount() - 4];
 
-			quad[0].texCoords = { 0,0 };
-			quad[1].texCoords = { float(tileSize), 0 };
-			quad[2].texCoords = { float(tileSize), float(tileSize)};
-			quad[3].texCoords = { 0, float(tileSize)};
+			float tx = static_cast<float>(x * tileSize);
+			float ts = static_cast<float>(tileSize);
 
-			sf::Color tint = isLand ? sf::Color::White : sf::Color(150, 150, 255);
-			quad[0].color = quad[1].color = quad[2].color = quad[3].color = tint;
+			quad[0].position = { tx, 0.f };
+			quad[1].position = { tx + ts, 0.f };
+			quad[2].position = { tx + ts, ts };
+			quad[3].position = { tx, ts };
+
+
+			quad[0].texCoords = { 0, 0 };
+			quad[1].texCoords = { (float)tileSize, 0 };
+			quad[2].texCoords = { (float)tileSize, (float)tileSize };
+			quad[3].texCoords = { 0, (float)tileSize };
 		}
-	}
 
-	return true;
-}
+		return true;
+	}
 
 void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
@@ -44,10 +46,10 @@ void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates state) const
 
 	//land
 	state.texture = m_landtexture;
-	target.draw(m_vertices, state);
+	target.draw(m_landVertices, state);
 
 	//water
 	state.texture = m_watertexture;
-	target.draw(m_vertices, state);
+	target.draw(m_waterVertices, state);
 
 }
