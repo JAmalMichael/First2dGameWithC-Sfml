@@ -11,8 +11,8 @@ private:
 	sf::VertexArray m_landVertices;
 	sf::VertexArray m_waterVertices;
 
-	const sf::Texture* m_landtexture = nullptr;
-	const sf::Texture* m_watertexture = nullptr;
+	const sf::Texture* m_landtexture;
+	const sf::Texture* m_watertexture;
 
 public:
 	bool load(

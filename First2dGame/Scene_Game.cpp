@@ -44,8 +44,6 @@ void SceneGame::AddbackGround() {
 
 void SceneGame::AddTileMap()
 {
-	sf::Texture landTexture;
-	sf::Texture waterTexture;
 
 	landTexture.loadFromFile("assets/structures/Tile1.png");
 	waterTexture.loadFromFile("assets/structures/Tile2.png");

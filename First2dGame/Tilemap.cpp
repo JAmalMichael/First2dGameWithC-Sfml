@@ -35,6 +35,7 @@ bool Tilemap::load(
 			quad[1].texCoords = { (float)tileSize, 0 };
 			quad[2].texCoords = { (float)tileSize, (float)tileSize };
 			quad[3].texCoords = { 0, (float)tileSize };
+
 		}
 
 		return true;

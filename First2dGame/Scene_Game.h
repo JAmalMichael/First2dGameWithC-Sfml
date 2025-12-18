@@ -15,6 +15,8 @@ private:
 	EntityManager m_entities;
 	SRender m_render;
 	STileRender t_render;
+	sf::Texture landTexture;
+	sf::Texture waterTexture;
 	Tilemap m_tileMap;
 	
 
