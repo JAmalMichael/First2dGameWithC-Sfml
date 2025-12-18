@@ -1,5 +1,6 @@
 #include "Scene_Game.h"
 #include "Game.h"
+#include "Tilemap.h"
 
 
 
@@ -43,6 +44,24 @@ void SceneGame::AddbackGround() {
 	);
 } 
 
+void SceneGame::AddTileMap()
+{
+	sf::Texture landTexture;
+	sf::Texture waterTexture;
+
+	landTexture.loadFromFile("assets/structures/Tile1.png");
+	waterTexture.loadFromFile("assets/structures/Tile2.png");
+
+	Tilemap tileMap;
+	tileMap.load(
+		landTexture,
+		waterTexture,
+		32,
+		30,
+		1
+	);
+
+}
 
 //void SceneGame::AddTileMap()
 //{
@@ -142,7 +161,7 @@ void SceneGame::onEnter()
 	m_assets.GetMusic("bgs").play();
 
 	AddbackGround();
-	//AddTileMap();
+	AddTileMap();
 	SpawnPlayer();
 	SpawnEnemy();
 
@@ -202,7 +221,9 @@ void SceneGame::sRender()
 	}
 
 	//draw tile second
-	t_render.render(m_entities, m_game->window());
+	/*t_render.render(m_entities, m_game->window());*/
+	m_game->window().draw(tileMap);
+
 	//draw other entities last
 	m_render.render(m_entities, m_game->window());
 

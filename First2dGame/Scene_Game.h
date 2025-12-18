@@ -4,6 +4,7 @@
 #include "EntityManager.h"
 #include "SRender.h"
 #include "STileRender.h"
+#include "Tilemap.h"
 
 class SceneGame : public Scene
 {
@@ -14,6 +15,7 @@ private:
 	EntityManager m_entities;
 	SRender m_render;
 	STileRender t_render;
+	Tilemap tileMap;
 	
 
 public:

@@ -1,10 +1,24 @@
 #pragma once
+#include "SFML/Graphics.hpp"
+#include <vector>
 
 
-class Tilemap
+class Tilemap : public sf::Drawable, sf::Transformable
 {
+private:
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
+
+	sf::VertexArray m_vertices;
+	const sf::Texture* m_landtexture;
+	const sf::Texture* m_watertexture;
+	
+
 public:
-	virtual bool isSolid(float worldX, float worldY) const = 0;
-	virtual int tileSize() const = 0;
-	virtual ~Tilemap() = default;
+	bool load(
+		const sf::Texture& landTex,
+		const sf::Texture& waterTex,
+		unsigned int tileSize,
+		unsigned int width,
+		unsigned int height
+	);
 };

@@ -158,6 +158,7 @@
     <ClCompile Include="SSound.cpp" />
     <ClCompile Include="STileRender.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="Tilemap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Assetsmanager.h" />
