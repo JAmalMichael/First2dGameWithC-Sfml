@@ -19,6 +19,7 @@ public:
 		const sf::Texture& landTex,
 		const sf::Texture& waterTex,
 		unsigned int tileSize,
-		unsigned int width
+		unsigned int width,
+		unsigned int height
 	);
 };

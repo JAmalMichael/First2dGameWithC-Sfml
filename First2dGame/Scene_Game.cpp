@@ -52,7 +52,8 @@ void SceneGame::AddTileMap()
 		landTexture,
 		waterTexture,
 		32,
-		30
+		30,
+		10
 	);
 
 	m_tileMap.setPosition(0.f, 690.f);
@@ -172,8 +173,8 @@ void SceneGame::onEnter()
 	auto t3 = m_assets.GetTexture("background");
 	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
 
-	auto t4 = m_assets.GetTexture("tile1");
-	std::cout << "Tile1 texture size: " << t4.getSize().x << ", " << t4.getSize().y << std::endl;
+	auto t4 = m_assets.GetTexture("tile2");
+	std::cout << "Tile2 texture size: " << t4.getSize().x << ", " << t4.getSize().y << std::endl;
 
 }
 
