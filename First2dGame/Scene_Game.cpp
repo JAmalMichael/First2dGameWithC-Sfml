@@ -55,7 +55,7 @@ void SceneGame::AddTileMap()
 		30
 	);
 
-	m_tileMap.setPosition(0.f, 300.f);
+	m_tileMap.setPosition(0.f, 690.f);
 
 }
 
