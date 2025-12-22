@@ -22,4 +22,13 @@ public:
 		unsigned int width,
 		unsigned int height
 	);
+
+	//return tile size
+	unsigned int tileSize() const { return m_tileSize; }
+
+	//isSolid
+	bool isSolid(float wx, float wy) const;
+
+private:
+	unsigned int m_tileSize = 32; // Add this member to store tile size
 };

@@ -4,6 +4,7 @@
 
 
 
+
 SceneGame::SceneGame(Game* game) : Scene(game) {
 	m_font.loadFromFile("assets/fonts/Satoshi.ttf");
 	m_label.setFont(m_font);
@@ -130,6 +131,15 @@ void SceneGame::SpawnPlayer()
 
 	m_entities.AddComponent<CInput>(p);
 
+	//animation
+	auto anim = m_entities.AddComponent<CAnimation>(p);
+
+	anim->m_frames = {
+		{0, 0, 32, 64},
+		{32, 0, 32, 64},
+		{64, 0, 32, 64},
+		{96, 0, 32, 64}
+	};
 }
 
 void SceneGame::SpawnEnemy()
@@ -194,9 +204,49 @@ void SceneGame::sInput()
 
 }
 
-
-void SceneGame::update()
+void SceneGame::PlayerMovement()
 {
+	const float speed = 180.f;
+	const float jumpForce = -420.f;
+
+	for (auto e : m_entities.GetEntities("player"))
+	{
+		auto inp = m_entities.GetComponent<CInput>(e);
+		auto phs = m_entities.GetComponent<CPhysics>(e);
+		auto trs = m_entities.GetComponent<CTransform>(e);
+
+		if (!inp || !phs || !trs) continue;
+
+		phs->velocity.x = 0.f;
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			phs->velocity.x = -speed;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			phs->velocity.x = speed;
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && phs->grounded)
+		{
+			phs->velocity.y = jumpForce;
+			phs->grounded = false;
+		}
+	}
+}
+
+
+void SceneGame::update(float dt)
+{
+	//movement
+	//m_movement.update(m_entities);
+	////physics
+	//m_physics.update(dt, m_entities);
+	////collision
+	//m_collison.update(dt, m_entities);
+	////animation
+	m_animation.update(dt, m_entities);
 	m_entities.update();
 }
 

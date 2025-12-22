@@ -13,7 +13,7 @@ public:
 	Scene(Game* game) : m_game(game) {}
 	virtual ~Scene() {}
 
-	virtual void update() = 0;
+	virtual void update(float dt) = 0;
 	virtual void sInput() = 0;
 	virtual void sRender() = 0;
 	virtual void onEnter() = 0;

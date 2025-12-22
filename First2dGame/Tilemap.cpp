@@ -59,3 +59,23 @@ void Tilemap::draw(sf::RenderTarget& target, sf::RenderStates state) const
 	target.draw(m_waterVertices, state);
 
 }
+
+bool Tilemap::isSolid(float wx, float wy) const
+{
+    int x = static_cast<int>(wx) / m_tileSize;
+    int y = static_cast<int>(wy) / m_tileSize;
+
+    if (x < 0 || y < 0) return false;
+
+    // Bounds check using vertex count
+    unsigned tilesWide = m_landVertices.getVertexCount() / 4;
+    unsigned tilesHigh = tilesWide ? tilesWide : 0;
+
+    unsigned index = (x + y * tilesWide) * 4;
+
+    if (index + 3 >= m_landVertices.getVertexCount())
+        return false;
+
+    // If land quad exists here ? solid
+    return m_landVertices[index].color.a != 0;
+}

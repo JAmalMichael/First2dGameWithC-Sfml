@@ -15,9 +15,11 @@ Game::Game() : m_window(sf::VideoMode(1280, 720), "HydesSyde Development")
 
 
 void Game::run() {
+	sf::Clock clock;
 	while (m_window.isOpen()) {
+		float dt = clock.restart().asSeconds();
 		m_scenes[m_currentScene]->sInput();
-		m_scenes[m_currentScene]->update();
+		m_scenes[m_currentScene]->update(dt);
 		m_scenes[m_currentScene]->sRender();
 	}
 }

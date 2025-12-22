@@ -1,13 +1,15 @@
 #pragma once
 //frame index, frame loop, speed
 #include "SFML/Graphics.hpp"
+#include <vector>
 
 struct CAnimation
 {
 	sf::Texture* texture = nullptr;
+	std::vector<sf::IntRect> m_frames;
 	int frameCount = 1;
 	int currentFrame = 0;
-	float frameTime = 0.1f;
+	float frameTime = 0.12f;
 	float elapsed = 0.f;
 	bool repeat = true;
 

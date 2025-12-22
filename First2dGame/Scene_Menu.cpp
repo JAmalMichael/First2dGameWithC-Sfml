@@ -12,7 +12,7 @@ SceneMenu::SceneMenu(Game* game) : Scene(game)
 	m_title.setPosition(120, 250);
 }
 
-void SceneMenu::update() {
+void SceneMenu::update(float dt) {
 	//static menu
 };
 

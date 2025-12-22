@@ -10,7 +10,7 @@ SceneGameOver::SceneGameOver(Game* game) : Scene(game) {
 	m_label.setPosition(60, 250);
 }
 
-void SceneGameOver::update() {}
+void SceneGameOver::update(float dt) {}
 
 void SceneGameOver::onEnter() {};
 

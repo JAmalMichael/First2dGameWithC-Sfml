@@ -9,7 +9,7 @@ private:
 
 public:
 	SceneMenu(Game* game);
-	void update() override;
+	void update(float dt) override;
 	void sInput() override;
 	void sRender() override;
 	void onEnter() override;

@@ -11,7 +11,7 @@ public:
 
 	SceneGameOver(Game* game);
 	void sInput() override;
-	void update() override;
+	void update(float dt) override;
 	void sRender() override;
 	void onEnter() override;
 	void onEnd() override {}
