@@ -118,7 +118,7 @@ void SceneGame::SpawnPlayer()
 
 	m_entities.AddComponent<CTransform>(
 		p,
-		sf::Vector2f(200, 680),
+		sf::Vector2f(200, 670),
 		sf::Vector2f(0.f, 0.f),
 		0.f
 	);
@@ -137,7 +137,7 @@ void SceneGame::SpawnEnemy()
 	auto e = m_entities.AddEntity("enemy");
 	 
 	m_entities.AddComponent<CTransform>(
-		e, sf::Vector2f(800, 680), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), 0
+		e, sf::Vector2f(800, 673), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), 0
 	);
 
 	m_entities.AddComponent<CSprite>(

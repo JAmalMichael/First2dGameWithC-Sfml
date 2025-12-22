@@ -28,6 +28,8 @@ bool Tilemap::load(
             float ty = static_cast<float>(y * tileSize);
             float ts = static_cast<float>(tileSize);
 
+            sf::Vector2u texSize = landTex.getSize(); //400 X 400
+
             quad[0].position = { tx, ty };
             quad[1].position = { tx + ts, ty };
             quad[2].position = { tx + ts, ty + ts };
