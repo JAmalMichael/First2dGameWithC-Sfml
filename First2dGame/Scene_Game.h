@@ -40,4 +40,5 @@ public:
 	void AddbackGround();
 	void AddTileMap();
 	void PlayerMovement();
+	void enemyMovement(float dt);
 };

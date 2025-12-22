@@ -2,18 +2,32 @@
 
 void SPhysics::update(float dt, EntityManager& em, Tilemap*)
 {
-	for (auto e : em.GetEntities())
-	{
-		if (em.GetComponent<CTransform>(e) && em.GetComponent<CPhysics>(e))
-		{
-			auto *t = em.GetComponent<CTransform>(e);
-			auto* p = em.GetComponent<CPhysics>(e);
-			//adding
-			t->velocity += sf::Vector2f(0.f, 0.f) * dt;
-			//applying drag
-			t->velocity -= t->velocity * p->drag * dt;
-			//integrate position
-			t->position += t->velocity * dt;
-		}
-	}
+    const float gravity = 980.f; 
+
+    for (auto e : em.GetEntities())
+    {
+        auto phs = em.GetComponent<CPhysics>(e);
+        auto trs = em.GetComponent<CTransform>(e);
+        if (!phs || !trs) continue;
+
+        // Apply gravity
+        if (phs->affectedByGravity && !phs->grounded)
+        {
+            phs->velocity.y += gravity * dt;
+        }
+
+        // Apply drag
+        phs->velocity.x *= (1.f - phs->drag);
+
+        // Update position
+        trs->position += phs->velocity * dt;
+
+        // Simple ground collision check
+        if (trs->position.y >= 670.f) // ground level
+        {
+            trs->position.y = 670.f;
+            phs->velocity.y = 0.f;
+            phs->grounded = true;
+        }
+    }
 }

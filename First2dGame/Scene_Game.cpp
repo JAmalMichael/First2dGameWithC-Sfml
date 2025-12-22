@@ -131,6 +131,8 @@ void SceneGame::SpawnPlayer()
 
 	m_entities.AddComponent<CInput>(p);
 
+	m_entities.AddComponent<CPhysics>(p);
+
 	//animation
 	auto anim = m_entities.AddComponent<CAnimation>(p);
 
@@ -147,61 +149,14 @@ void SceneGame::SpawnEnemy()
 	auto e = m_entities.AddEntity("enemy");
 	 
 	m_entities.AddComponent<CTransform>(
-		e, sf::Vector2f(800, 673), sf::Vector2f(rand() % 3 - 1, rand() % 3 - 1), 0
+		e, sf::Vector2f(800, 673), sf::Vector2f(0.f, 0.f), 0
 	);
 
 	m_entities.AddComponent<CSprite>(
 		e, m_assets.GetTexture("enemy")
 	);
-}
 
-
-void SceneGame::onEnter()
-{
-	m_assets.LoadTexture("background", "assets/structures/Background.png");
-	m_assets.LoadTexture("player", "assets/character/Idle/Idle1.png");
-	m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
-	m_assets.LoadTexture("tile1", "assets/structures/Tile1.png");
-	m_assets.LoadTexture("tile2", "assets/structures/Tile2.png");
-
-	m_assets.LoadMusic("bgs", "assets/audio/start.wav");
-	m_assets.GetMusic("bgs").play();
-
-	AddbackGround();
-	AddTileMap();
-	SpawnPlayer();
-	SpawnEnemy();
-
-	std::cout << "SceneGame::onEnter called!" << std::endl;
-
-	auto t1 = m_assets.GetTexture("player");
-	std::cout << "Player texture size: " << t1.getSize().x << ", " << t1.getSize().y << std::endl;
-
-	auto t2 = m_assets.GetTexture("enemy");
-	std::cout << "Enemy texture size: " << t2.getSize().x << ", " << t2.getSize().y << std::endl;
-
-	auto t3 = m_assets.GetTexture("background");
-	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
-
-	auto t4 = m_assets.GetTexture("tile2");
-	std::cout << "Tile2 texture size: " << t4.getSize().x << ", " << t4.getSize().y << std::endl;
-
-}
-
-
-void SceneGame::sInput()
-{
-	sf::Event event;
-	while (m_game->window().pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed) m_game->window().close();
-		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
-		{
-		}*/
-
-		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
-	}
-
+	m_entities.AddComponent<CPhysics>(e);
 }
 
 void SceneGame::PlayerMovement()
@@ -236,15 +191,86 @@ void SceneGame::PlayerMovement()
 	}
 }
 
+void SceneGame::enemyMovement(float dt) {
+
+	for (auto e : m_entities.GetEntities("enemy"))
+	{
+		auto phs = m_entities.GetComponent<CPhysics>(e);
+		auto trs = m_entities.GetComponent<CTransform>(e);
+		if (!phs || !trs) continue;
+
+		trs->position += phs->velocity * dt;
+
+		if (trs->position.x < 100.f) {
+			phs->velocity.x = +100.f; // move right
+		}
+		else if (trs->position.x > 1000.f) {
+			phs->velocity.x = -100.f; // move left
+		}
+	}
+}
+
+void SceneGame::onEnter()
+{
+	m_assets.LoadTexture("background", "assets/structures/Background.png");
+	m_assets.LoadTexture("player", "assets/character/run_sheet.png");
+	m_assets.LoadTexture("enemy", "assets/enemy/Idle/blackIdle1.png");
+	m_assets.LoadTexture("tile1", "assets/structures/Tile1.png");
+	m_assets.LoadTexture("tile2", "assets/structures/Tile2.png");
+
+	m_assets.LoadMusic("bgs", "assets/audio/start.wav");
+	m_assets.GetMusic("bgs").play();
+
+	AddbackGround();
+	AddTileMap();
+	SpawnPlayer();
+	SpawnEnemy();
+	PlayerMovement();
+
+	float dt = 0.f;
+	enemyMovement(dt);
+
+	std::cout << "SceneGame::onEnter called!" << std::endl;
+
+	auto t1 = m_assets.GetTexture("player");
+	std::cout << "Player texture size: " << t1.getSize().x << ", " << t1.getSize().y << std::endl;
+
+	auto t2 = m_assets.GetTexture("enemy");
+	std::cout << "Enemy texture size: " << t2.getSize().x << ", " << t2.getSize().y << std::endl;
+
+	auto t3 = m_assets.GetTexture("background");
+	std::cout << "Background texture size: " << t3.getSize().x << ", " << t3.getSize().y << std::endl;
+
+	auto t4 = m_assets.GetTexture("tile2");
+	std::cout << "Tile2 texture size: " << t4.getSize().x << ", " << t4.getSize().y << std::endl;
+}
+
+
+void SceneGame::sInput()
+{
+	sf::Event event;
+	while (m_game->window().pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed) m_game->window().close();
+		/*if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Enter)
+		{
+		}*/
+
+		if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) m_game->changeScene("MENU");
+	}
+
+}
+
+
 
 void SceneGame::update(float dt)
 {
 	//movement
-	//m_movement.update(m_entities);
+	m_movement.update(m_entities);
 	////physics
-	//m_physics.update(dt, m_entities);
+	m_physics.update(dt, m_entities);
 	////collision
-	//m_collison.update(dt, m_entities);
+	m_collison.update(dt, m_entities);
 	////animation
 	m_animation.update(dt, m_entities);
 	m_entities.update();
