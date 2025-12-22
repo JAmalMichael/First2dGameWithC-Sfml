@@ -52,7 +52,7 @@ void SceneGame::AddTileMap()
 		landTexture,
 		waterTexture,
 		32,
-		30,
+		1000,
 		10
 	);
 

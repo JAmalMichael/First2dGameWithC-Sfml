@@ -17,7 +17,7 @@ bool Tilemap::load(
     {
         for (unsigned int x = 0; x < width; ++x)
         {
-            bool isLand = (x < 20);
+            bool isLand = (( x % 51) < 50);
 
             sf::VertexArray& verts = isLand ? m_landVertices : m_waterVertices;
             verts.resize(verts.getVertexCount() + 4);
